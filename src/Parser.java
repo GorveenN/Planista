@@ -39,7 +39,7 @@ public class Parser {
     }
 
     private Task readTask(int id) throws InvalidLineException {
-        Scanner line = readLine(id);
+        Scanner line = readLine(id + 1);
         int appearanceTime = readNumber(id, line);
         int demand = readNumber(id, line);
 
