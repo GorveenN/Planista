@@ -18,7 +18,7 @@ public class Parser {
         if (line.hasNextInt()) {
             return line.nextInt();
         }
-        throw new TooShortLineException(id);
+        throw new TooShortLineException(id + 1);
     }
 
     private Scanner readLine(int id) throws InvalidLineException {
@@ -44,7 +44,7 @@ public class Parser {
         int demand = readNumber(id, line);
 
         if (line.hasNext()) {
-            throw new TooLongLineException(id);
+            throw new TooLongLineException(id + 1);
         }
         return new Task(id, demand, appearanceTime);
     }
@@ -54,7 +54,7 @@ public class Parser {
 
         Task[] tasks = new Task[taskNumber];
         for (int i = 0; i < taskNumber; i++) {
-            tasks[i] = readTask(i + 2);
+            tasks[i] = readTask(i + 1);
         }
         return tasks;
     }
@@ -62,11 +62,15 @@ public class Parser {
     public int[] readQuantum(int id) throws InvalidLineException {
         int quantaNumber = readParametersNumber(id);
         int[] quanta = new int[quantaNumber];
+        Scanner line = readLine(id + 1);
         for (int i = 0; i < quantaNumber; i++) {
-            quanta[i] = readNumber(id + 1, sc);
+            quanta[i] = readNumber(id, line);
+        }
+        if (line.hasNext()) {
+            throw new TooLongFileException(id + 1);
         }
         if (sc.hasNext()) {
-            throw new TooLongFileException(id + 1);
+            throw new TooLongFileException(id + 2);
         }
         return quanta;
     }
