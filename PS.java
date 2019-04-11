@@ -26,7 +26,6 @@ public class PS extends Strategy {
             int size = tasksQueue.size();
             PriorityQueue<Task> tasksQueueHolder = new PriorityQueue<>(new DemandIDComparator());
 
-            //while (!tasksQueue.isEmpty())
             for (int a = 0; a < size; a++)
             {
                 Task currentTask = tasksQueue.poll();
